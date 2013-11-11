@@ -81,4 +81,5 @@ class PagesController extends AppController {
 	$this->render('/Pages/index');
 	
 	}
+	
 }

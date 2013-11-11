@@ -1,0 +1,1 @@
+<div style="float:right"><?php echo $this->Html->link("Log out",array("controller"=>"users","action"=>"logout"));?></div>

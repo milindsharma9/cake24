@@ -22,7 +22,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1>Login Page</h1>
+			<h1>Cake2.4</h1>
 		</div>
 		<div id="content">
 

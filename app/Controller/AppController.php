@@ -33,9 +33,18 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
+	public $components = array('Auth'=>array('loginRedirect' => array('controller' => 'users', 'action' => 'dashboard'),
+'logoutRedirect' => array('controller' => 'users', 'action' => 'login')),'RequestHandler','Session');
+	
+	public $helpers = array('Form', 'Html', 'Js', 'Time','Session','Text','Number','Paginator');
+	
 	public function beforeFilter(){
 	
 	///this function is executed  before every action in controller.Used for checking session value or user permission
+	
+	
+	 $this->Auth->userModel = 'User'; 
+	 //$this->Auth->allow('*');
 
 	}
 
