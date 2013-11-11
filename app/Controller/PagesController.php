@@ -75,4 +75,10 @@ class PagesController extends AppController {
 			throw new NotFoundException();
 		}
 	}
+	public function index() {
+	//	$this->set(compact('page', 'subpage', 'title_for_layout'));
+	$this->set('welcome_message','Hello to first cakephp application');
+	$this->render('/Pages/index');
+	
+	}
 }

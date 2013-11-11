@@ -32,4 +32,11 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+	public function beforeFilter(){
+	
+	///this function is executed  before every action in controller.Used for checking session value or user permission
+
+	}
+
 }
