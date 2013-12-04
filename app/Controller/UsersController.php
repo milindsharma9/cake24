@@ -77,7 +77,7 @@ class UsersController extends AppController {
 					
 					$this->request->data["Upload"]["user_id"] = $this->Auth->user("id");
 					
-					$this->request->data['Upload']['filename'] = $flname. $extension;
+					$this->request->data['Upload']['filename'] = $flname. $extension; ///never use $this->data to assign vals as it iscalling _get()
 					return true;
 				}
 		 }
@@ -89,7 +89,12 @@ class UsersController extends AppController {
 		if($this->request->isPost()){
 			//die("kkk");
 			if($this->processfile()){
-				$this->Upload->save($this->data);
+				
+					if($this->Upload->save($this->data,array('validate'=>true))){
+				} else {
+					// didn’t validate logic
+					$errors = $this->Upload->validationErrors;
+				}
 				
 			}
 		}
