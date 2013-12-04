@@ -19,7 +19,12 @@ public $validate = 	array(
 														'message' => 'This field cannot be left blank',
 														'last'=>true //If you want validation to continue in spite of a rule
 																	 //	failing set key last to false for that rule
-												  )
+												  ),
+												  
+										'size' => array(
+														'rule' => array('between', 8, 20),
+														'message' => 'Title should be at least 8 chars long'
+														)		  
 									),
 						'filename' => array(
 									'notempty' => array(
