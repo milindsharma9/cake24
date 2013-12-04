@@ -2,7 +2,7 @@
 class UsersController extends AppController {
 
 	public $name = 'Users';  //name of the model file
-	public $uses = array('User');
+	public $uses = array('User','Upload');
 	
 	function beforeFilter(){
 	//$this->Auth->logout();
@@ -63,6 +63,36 @@ class UsersController extends AppController {
 	
 	public function dashboard(){
 	
+	}
+	protected function processfile(){
+	
+		$file = $this->data['Upload']['filename'];
+		//print_r($file);die;
+		//print_r($this->data);die;
+		 if ($file['error'] === UPLOAD_ERR_OK) {
+				$filename  = $file['name'];
+				$extension =  substr(strrchr($filename, '.'), 1);
+				$flname = String::uuid();
+				if (move_uploaded_file($file['tmp_name'], WWW_ROOT.'uploads'.DS.$flname.".". $extension)) {
+					
+					$this->request->data["Upload"]["user_id"] = $this->Auth->user("id");
+					
+					$this->request->data['Upload']['filename'] = $flname. $extension;
+					return true;
+				}
+		 }
+		 return false;
+		
+	}
+	public function uploadfiles(){
+		///function to upload files
+		if($this->request->isPost()){
+			//die("kkk");
+			if($this->processfile()){
+				$this->Upload->save($this->data);
+				
+			}
+		}
 	}
 	
 	public function logout(){
