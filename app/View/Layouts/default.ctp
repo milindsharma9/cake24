@@ -6,7 +6,7 @@
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
+		<?php //echo $cakeDescription ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
@@ -17,6 +17,7 @@
 		//echo $this->fetch('meta');
 		//echo $this->fetch('css');
 		///echo $this->fetch('script');
+		echo $this->Html->script('jquery1.10.2');
 	?>
 </head>
 <body>

@@ -34,7 +34,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 
 	public $components = array('Auth'=>array('loginRedirect' => array('controller' => 'users', 'action' => 'dashboard'),
-'logoutRedirect' => array('controller' => 'users', 'action' => 'login')),'RequestHandler','Session');
+'logoutRedirect' => array('controller' => 'users', 'action' => 'login')),'RequestHandler','Session','Paginator');
 	
 	public $helpers = array('Form', 'Html', 'Js', 'Time','Session','Text','Number','Paginator');
 	

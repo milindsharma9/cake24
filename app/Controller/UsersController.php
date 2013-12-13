@@ -77,7 +77,7 @@ class UsersController extends AppController {
 					
 					$this->request->data["Upload"]["user_id"] = $this->Auth->user("id");
 					
-					$this->request->data['Upload']['filename'] = $flname. $extension; ///never use $this->data to assign vals as it iscalling _get()
+					$this->request->data['Upload']['filename'] = $flname.".". $extension; ///never use $this->data to assign vals as it iscalling _get()
 					return true;
 				}
 		 }
@@ -104,4 +104,21 @@ class UsersController extends AppController {
 	
 		return $this->redirect($this->Auth->logout());
 	}
+	
+	public function listFiles(){
+		///uploaded fields
+		$this->Paginator->settings = array(  
+													'limit' => 1,
+													'conditions' => array('Upload.user_id' => $this->Auth->user("id")),
+													 'order' => array('Upload.id' => 'desc'),
+													
+											);
+									
+		$this->set('uploads', $this->Paginator->paginate('Upload'));								
+		  							
+	
+	
+	}
+	
+	
 }
