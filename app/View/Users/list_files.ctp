@@ -1,5 +1,9 @@
-
-<table style="width:80%">
+<?php
+print_r($this->passedArgs);
+ $this->Paginator->url($this->passedArgs);
+						  
+?>
+<table style="width:80%"id="content">
 <thead>
 <tr>
 <th style="width:50%;text-align:left">
